@@ -34,6 +34,30 @@ In today's fast-paced world, food waste and dietary concerns are becoming issues
 5. Users access current inventory through web interface
 6. Recipe suggestions generated based on available ingredients
 
+
+## Hardware Design
+
+### CAD Model
+<p align="center">
+  <img width="700" alt="Fridge Friend CAD Model" src="https://github.com/user-attachments/assets/71b03507-1cad-4dc9-b488-ffb717b5db79" />
+  <br>
+  <em>3D CAD model showing the camera housing and sensor mounting system</em>
+</p>
+
+### Final Assembly
+<p align="center">
+  <img src="[docs/images/final-assembly.jpg](https://github.com/user-attachments/assets/244a71a3-a55c-4961-b040-5fbb706548ae)" alt="Fridge Friend Final Assembly" width="700"/>
+  <br>
+  <em>Completed hardware assembly installed in refrigerator with Raspberry Pi, camera module, and sensors</em>
+</p>
+
+The hardware design features:
+- Custom 3D-printed camera housing for refrigerator mounting
+- Integrated Raspberry Pi compartment with thermal management
+- Optimized camera angle for full shelf coverage
+- Weatherproof enclosure for refrigerator environment
+- Easy installation with magnetic mounting system
+  
 ## Key Features
 
 - **Real-Time Food Detection:** Computer vision-powered system that automatically identifies produce and packaged goods
