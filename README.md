@@ -46,7 +46,7 @@ In today's fast-paced world, food waste and dietary concerns are becoming issues
 
 ### Final Assembly
 <p align="center">
-  <img src="[docs/images/final-assembly.jpg](https://github.com/user-attachments/assets/244a71a3-a55c-4961-b040-5fbb706548ae)" alt="Fridge Friend Final Assembly" width="700"/>
+  <img src="https://github.com/user-attachments/assets/244a71a3-a55c-4961-b040-5fbb706548ae" alt="Fridge Friend Final Assembly" width="700"/>
   <br>
   <em>Completed hardware assembly installed in refrigerator with Raspberry Pi, camera module, and sensors</em>
 </p>
