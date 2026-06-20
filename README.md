@@ -3,7 +3,7 @@
 ## Team Information
 
 **ENSC Capstone 1244 - Company 09**  
-**Project Duration:** May 2024 – December 2024
+**Project Duration:** May 2024 to December 2024
 
 ## Project Overview
 
@@ -57,11 +57,56 @@ The hardware design features:
 - Optimized camera angle for full shelf coverage
 - Weatherproof enclosure for refrigerator environment
 - Easy installation with magnetic mounting system
-  
+
+## Repository Structure
+
+```
+.
+├── Backend/
+│   ├── importRecipes.mjs   # Builds the SQLite recipe database from recipe.csv
+│   ├── recipe.csv          # Source recipe data
+│   ├── recipes.db          # Generated SQLite recipe database
+│   ├── api.py              # Small Python client for posting test ingredient updates
+│   └── package.json
+├── UI/
+│   ├── server.js           # Express + Socket.IO web server (port 3000)
+│   ├── recipes.db          # SQLite recipe database served by the app
+│   ├── public/             # Front end: index.html, script.js, styles.css, images, Ingredients.csv
+│   └── package.json
+└── README.md
+```
+
+The on-device computer vision and detection code runs on the Raspberry Pi and is deployed separately from this repository, which contains the web application and recipe backend.
+
+## Getting Started
+
+### Prerequisites
+- Node.js and npm
+- (Optional) Python 3 with the `requests` package, for the sample API test client
+
+### Run the web app
+```bash
+cd UI
+npm install
+node server.js
+```
+Then open http://localhost:3000 in your browser. The server serves the interface, exposes REST endpoints for managing inventory and fetching recipes, and opens a Socket.IO channel for real-time "session complete" notifications.
+
+### Recipe database
+A prebuilt `recipes.db` is included with the app. To regenerate it from `recipe.csv`:
+```bash
+cd Backend
+npm install
+node importRecipes.mjs
+```
+
+### Inventory data
+Current fridge contents are stored in `UI/public/Ingredients.csv` as `name,date` rows. The server reads and updates this file as items are added, edited, or removed through the interface, and recipe suggestions are matched against these ingredients.
+
 ## Key Features
 
 - **Real-Time Food Detection:** Computer vision-powered system that automatically identifies produce and packaged goods
-- **Inventory Tracking:** Maintains an up-to-date database of all items in your refrigerator
+- **Inventory Tracking:** Maintains an up-to-date record of all items in your refrigerator
 - **Barcode Recognition:** Dual detection system supporting both visual recognition and barcode scanning
 - **Recipe Suggestions:** Intelligent recipe recommendations based on available ingredients
 - **Cloud Synchronization:** Access your inventory from anywhere through our user interface
@@ -76,7 +121,7 @@ The hardware design features:
 - Real-time object detection for instant ingredient identification
 
 ### Backend Infrastructure
-- Architected Python REST API for seamless data synchronization
+- Built a **Node.js and Express** REST API with **Socket.IO** for real-time inventory updates
 - Real-time inventory updates from multiple input sources (computer vision + barcode scanning)
 - Robust error handling and data validation
 
@@ -92,13 +137,15 @@ The hardware design features:
 - YOLOv10 (Ultralytics)
 - OpenCV
 - Python
-- TensorFlow/PyTorch
+- PyTorch
 
 ### Backend & API
-- Python REST API
-- Database (PostgreSQL)
-- OpenFoodFacts API
-- ZBar (Barcode Processing)
+- Node.js and Express
+- Socket.IO (real-time notifications)
+- SQLite (recipe database)
+- CSV-based ingredient inventory
+- OpenFoodFacts API (barcode lookups)
+- ZBar (barcode processing)
 
 ### Hardware
 - Raspberry Pi (local processing and detection)
@@ -113,7 +160,7 @@ The hardware design features:
 ### Architecture Benefits
 - **Edge Processing:** YOLOv10 inference runs locally on Pi, maximizing privacy
 - **Cloud Storage:** Centralized inventory accessible from any device
-- **Scalability:** Multiple Raspberry Pi units could connect to single EC2 server (with future development)
+- **Scalability:** Multiple Raspberry Pi units could connect to a single EC2 server (with future development)
 - **Reliability:** Local processing continues even if network connection is temporarily lost
 
 ## Impact & Benefits
